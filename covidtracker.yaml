@@ -22,13 +22,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CountryArray'
-  /history:
+  /countries/{country}:
     get:
       summary: Get covid history of a country.
       description: Name of a country.
       parameters:
       - name: country
-        in: query
+        in: path
         description: Name of a country
         required: true
         schema:
