@@ -1,0 +1,105 @@
+openapi: 3.0.1
+info:
+  title: Covid Tracker API
+  contact:
+    name: Apigee
+    email: support@apigee.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: http://pratyushm49-trial-test.apigee.net/covid_tracker_proxy
+- url: https://pratyushm49-trial-test.apigee.net/covid_tracker_proxy
+paths:
+  /countries:
+    get:
+      summary: Get all Countries
+      description: This endpoint returns a list of all countries as an array.
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CountryArray'
+  /history:
+    get:
+      summary: Get covid history of a country.
+      description: Name of a country.
+      parameters:
+      - name: country
+        in: query
+        description: Name of a country
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CountryCovidHistory'
+components:
+  schemas:
+    CountryArray:
+      type: object
+      properties:
+        results:
+          type: integer
+        response:
+          type: array
+          items:
+            type: string
+    CountryCovidHistory:
+      type: object
+      properties:
+        result:
+          type: integer
+        response:
+          type: array
+          items:
+            type: object
+            properties:
+              continent:
+                type: string
+              country:
+                type: string
+              population:
+                type: string
+              cases:
+                type: object
+                properties:
+                  new:
+                    type: string
+                  active:
+                    type: integer
+                  critical:
+                    type: integer
+                  recovered:
+                    type: integer
+                  1M_pop:
+                    type: integer
+                  total:
+                    type: integer
+              deaths:
+                type: object
+                properties:
+                  new:
+                    type: string
+                  1M_pop:
+                    type: string
+                  total:
+                    type: integer
+              tests:
+                type: object
+                properties:
+                  1M_pop:
+                    type: string
+                  total:
+                    type: integer
+              day:
+                type: string
+              time:
+                type: string
