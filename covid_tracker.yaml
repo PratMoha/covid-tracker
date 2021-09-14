@@ -9,7 +9,7 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   version: 1.0.0
 servers:
-- url: https://pratyushm49-trial-test.apigee.net/covid_tracker_proxy
+- url: https://pratyushm49-trial-test.apigee.net/v1/covid_tracker_proxy
 paths:
   /countries:
     get:
